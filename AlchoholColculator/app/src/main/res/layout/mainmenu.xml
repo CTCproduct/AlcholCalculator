@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.hirokikirigaya.alchoholcolculator.MainActivity"
+    android:orientation="vertical">
+
+    <!--上部メニュー-->
+    <LinearLayout
+        android:paddingTop="5dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/BtnAlcholcalc"
+            android:layout_marginRight="5dp"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:text="分解時間計算"
+            android:textSize="20dp"/>
+
+        <Button
+            android:id="@+id/BtnKnowledge"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:text="アルコール豆知識"
+            android:textSize="19dp"/>
+
+    </LinearLayout>
+
+    <!--中部メニュー-->
+    <LinearLayout
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/BtnSickness"
+            android:layout_marginRight="5dp"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:text="2日酔い"
+            android:textSize="20dp"/>
+
+        <Button
+            android:id="@+id/BtnStock1"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:text="予備①"
+            android:textSize="20dp"/>
+
+    </LinearLayout>
+
+    <!--下部メニュー-->
+    <LinearLayout
+        android:paddingBottom="5dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/BtnSetting"
+            android:layout_marginRight="5dp"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:text="設定"
+            android:textSize="20dp"/>
+
+        <Button
+            android:id="@+id/BtnHelp"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:text="ヘルプ"
+            android:textSize="20dp"/>
+    </LinearLayout>
+</LinearLayout>
