@@ -37,8 +37,8 @@ public class MainActivity extends AppCompatActivity {
         btnKnow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getApplicationContext(),"まだ実装されておりません。",Toast.LENGTH_SHORT).show();
-
+                Intent intent = new Intent(getApplication(),Knowledge.class);
+                startActivity(intent);
             }
         });
 
@@ -46,8 +46,8 @@ public class MainActivity extends AppCompatActivity {
         btnSick.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getApplicationContext(),"まだ実装されておりません。",Toast.LENGTH_SHORT).show();
-
+                Intent intent = new Intent(getApplication(),Sickness.class);
+                startActivity(intent);
             }
         });
 
@@ -55,7 +55,8 @@ public class MainActivity extends AppCompatActivity {
         btnStock1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getApplicationContext(),"まだ実装されておりません。",Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getApplication(),Stock.class);
+                startActivity(intent);
             }
         });
 
@@ -63,8 +64,8 @@ public class MainActivity extends AppCompatActivity {
         btnSet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getApplicationContext(),"まだ実装されておりません。",Toast.LENGTH_SHORT).show();
-
+                Intent intent = new Intent(getApplication(),Settings.class);
+                startActivity(intent);
             }
         });
 
@@ -72,8 +73,8 @@ public class MainActivity extends AppCompatActivity {
         btnHelp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getApplicationContext(),"まだ実装されておりません。",Toast.LENGTH_SHORT).show();
-
+                Intent intent = new Intent(getApplication(),Help.class);
+                startActivity(intent);
             }
         });
     }
