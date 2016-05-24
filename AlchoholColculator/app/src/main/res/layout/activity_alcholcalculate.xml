@@ -22,9 +22,11 @@
             android:layout_height="wrap_content" />
 
         <Spinner
+            android:id="@+id/spSex"
             android:layout_weight="1"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:popupBackground="#C9C9"/>
 
         <TextView
             android:id="@+id/VtxtWeight"
