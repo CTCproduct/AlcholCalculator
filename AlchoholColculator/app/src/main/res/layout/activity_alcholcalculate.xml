@@ -7,18 +7,31 @@
     tools:context="com.example.hirokikirigaya.alchoholcolculator.MainActivity"
     android:orientation="vertical">
 
-    <!--体重-->
+    <!--性別、体重-->
     <LinearLayout
+        android:paddingLeft="15dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
+
+        <TextView
+            android:text="性別："
+            android:textSize="25dp"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content" />
+
+        <Spinner
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"/>
 
         <TextView
             android:id="@+id/VtxtWeight"
             android:gravity="right"
             android:textSize="25dp"
             android:layout_weight="1"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="体重：" />
 
@@ -27,82 +40,77 @@
             android:gravity="center"
             android:layout_weight="1"
             android:textSize="25dp"
-            android:layout_width="30dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"/>
 
         <TextView
             android:text="kg"
             android:textSize="20dp"
-            android:layout_weight="1"
-            android:layout_width="wrap_content"
+            android:layout_weight="0.5"
+            android:layout_width="0dp"
             android:layout_height="wrap_content" />
     </LinearLayout>
 
-    <!--度数-->
+    <!--アルコールの種類-->
     <LinearLayout
         android:paddingTop="10dp"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
         <TextView
             android:id="@+id/VtxtAldegree"
-            android:gravity="right"
             android:textSize="25dp"
-            android:layout_weight="1"
-            android:layout_width="wrap_content"
+            android:layout_weight="3"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="度数：" />
+            android:text="種類：" />
 
-        <EditText
-            android:id="@+id/EtxtAldegree"
-            android:gravity="center"
-            android:layout_weight="1"
-            android:textSize="25dp"
-            android:layout_width="30dp"
-            android:layout_height="wrap_content" />
+        <Spinner
+            android:layout_marginRight="100dp"
+            android:layout_weight="7"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"/>
 
-        <TextView
-            android:text="％"
-            android:textSize="20dp"
-            android:layout_weight="1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
     </LinearLayout>
 
     <!--アルコール量-->
     <LinearLayout
         android:paddingTop="10dp"
+        android:paddingLeft="15dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
         <TextView
             android:id="@+id/VtxtMili"
-            android:gravity="right"
             android:textSize="25dp"
             android:layout_weight="1"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="　量：" />
+            android:text="グラス：" />
+
+        <Spinner
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"/>
 
         <EditText
-            android:id="@+id/EtxtMili"
-            android:gravity="center"
             android:layout_weight="1"
-            android:textSize="25dp"
-            android:layout_width="30dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content" />
 
         <TextView
-            android:text="ml"
+            android:text="杯"
             android:textSize="20dp"
-            android:layout_weight="1"
-            android:layout_width="wrap_content"
+            android:layout_weight="0.5"
+            android:layout_width="0dp"
             android:layout_height="wrap_content" />
     </LinearLayout>
 
-    <!--計算ボタン-->
+    <!--計算、追加、リセットボタン-->
     <LinearLayout
         android:paddingTop="10dp"
         android:layout_width="match_parent"
@@ -111,25 +119,37 @@
         android:orientation="horizontal">
 
         <Button
+            android:paddingRight="15dp"
+            android:text="追加"
+            android:textSize="25dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:paddingRight="15dp"
             android:id="@+id/BtnCalc"
             android:text="計算"
             android:textSize="25dp"
             android:layout_width="wrap_content"
             android:layout_height="match_parent" />
+
+        <Button
+            android:text="リセット"
+            android:textSize="25dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
     </LinearLayout>
 
+    <!--リストビュー-->
     <LinearLayout
-        android:paddingTop="10dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:gravity="center">
 
-        <com.example.hirokikirigaya.alchoholcolculator.AutoFontSizeTextView
-            android:id="@+id/VtxtResult"
-            android:gravity="center"
-            android:textSize="20dp"
-            android:text="計算結果を表示します。"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+        <ListView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"/>
+
     </LinearLayout>
 </LinearLayout>
