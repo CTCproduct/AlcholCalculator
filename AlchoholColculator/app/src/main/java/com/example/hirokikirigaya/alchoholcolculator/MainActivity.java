@@ -5,8 +5,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
@@ -15,7 +13,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //初期表示画面：メインメニュー
-        setContentView(R.layout.mainmenu);
+        setContentView(R.layout.activity_main);
 
         //各種Viewの取得
         Button btnCalc = (Button)findViewById(R.id.BtnAlcholcalc);
@@ -39,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
         btnKnow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Toast.makeText(getApplicationContext(),"まだ実装されておりません。",Toast.LENGTH_SHORT).show();
 
             }
         });
@@ -47,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
         btnSick.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Toast.makeText(getApplicationContext(),"まだ実装されておりません。",Toast.LENGTH_SHORT).show();
 
             }
         });
@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
         btnStock1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getApplicationContext(),"まだ実装されておりません。",Toast.LENGTH_SHORT);
+                Toast.makeText(getApplicationContext(),"まだ実装されておりません。",Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -63,6 +63,7 @@ public class MainActivity extends AppCompatActivity {
         btnSet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Toast.makeText(getApplicationContext(),"まだ実装されておりません。",Toast.LENGTH_SHORT).show();
 
             }
         });
@@ -71,6 +72,7 @@ public class MainActivity extends AppCompatActivity {
         btnHelp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Toast.makeText(getApplicationContext(),"まだ実装されておりません。",Toast.LENGTH_SHORT).show();
 
             }
         });

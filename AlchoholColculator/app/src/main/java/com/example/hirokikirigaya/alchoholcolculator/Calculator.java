@@ -16,7 +16,7 @@ public class Calculator extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         //表示画面：AlcholCalculate
-        setContentView(R.layout.alcholcalculate);
+        setContentView(R.layout.activity_alcholcalculate);
 
         //各種Viewの取得
         Button btncalc = (Button)findViewById(R.id.BtnCalc);
