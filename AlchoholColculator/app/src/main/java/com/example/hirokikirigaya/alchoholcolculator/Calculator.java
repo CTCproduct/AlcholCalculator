@@ -1,5 +1,6 @@
 package com.example.hirokikirigaya.alchoholcolculator;
 
+import android.content.ClipData;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
@@ -32,7 +33,7 @@ public class Calculator extends AppCompatActivity {
         final Button btnglass = (Button)findViewById(R.id.BtnGlass);
         final Button btnadd = (Button)findViewById(R.id.BtnAdd);
         Button btncalc = (Button)findViewById(R.id.BtnCalc);
-        Button btnres = (Button)findViewById(R.id.BtnRes);
+        final Button btnres = (Button)findViewById(R.id.BtnRes);
 
         final ArrayAdapter<String> adapter;
 
@@ -73,7 +74,16 @@ public class Calculator extends AppCompatActivity {
 
         final ArrayAdapter<String> adapter1 = new ArrayAdapter<String>(Calculator.this,R.layout.spinner_item,getResources().getStringArray(R.array.alchol));
 
+        btnalchol.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ItemDialog itemDialog = new ItemDialog();
+                itemDialog.show(getSupportFragmentManager(),"dialog");
+            }
+        });
+
         //btnalcholのボタンクリック時処理
+        /*
         btnalchol.setOnClickListener(new View.OnClickListener() {
 
             int selectedIndex = 0;
@@ -96,6 +106,7 @@ public class Calculator extends AppCompatActivity {
                 }
             };
         });
+        */
 
         final ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(Calculator.this,R.layout.spinner_item,getResources().getStringArray(R.array.glass));
 
@@ -136,4 +147,5 @@ public class Calculator extends AppCompatActivity {
 
         //btnresのボタンクリック時処理
     }
+
 }
