@@ -1,6 +1,8 @@
 package com.example.hirokikirigaya.alchoholcolculator;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -16,42 +18,108 @@ import android.widget.Toast;
  */
 public class Calculator extends AppCompatActivity {
 
+    //ArrayAdapter<String> adapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         //表示画面：AlcholCalculate
         setContentView(R.layout.activity_alcholcalculate);
 
-        //各種Viewの取得
+        //Buttonのインスタンス取得
+        final Button btnsex = (Button)findViewById(R.id.BtnSex);
+        final Button btnalchol = (Button)findViewById(R.id.BtnAlchol);
+        final Button btnglass = (Button)findViewById(R.id.BtnGlass);
+        final Button btnadd = (Button)findViewById(R.id.BtnAdd);
         Button btncalc = (Button)findViewById(R.id.BtnCalc);
-        TextView vtxtweight = (TextView)findViewById(R.id.VtxtWeight);
-        TextView vtxtaldegree = (TextView)findViewById(R.id.VtxtAldegree);
-        TextView vtxtmili = (TextView)findViewById(R.id.VtxtMili);
+        Button btnres = (Button)findViewById(R.id.BtnRes);
+
+        final ArrayAdapter<String> adapter;
+
+        //EditTextのインスタンスの取得
         final EditText etxtweight = (EditText)findViewById(R.id.EtxtWeight);
+
         //クラスの宣言
         final AlcholCalculator alcholCalculator = new AlcholCalculator();
 
-        //ListViewの設定
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(Calculator.this,R.layout.spinner_main,getResources().getStringArray(R.array.sex));
-        adapter.setDropDownViewResource(R.layout.spinner_item);
-        Spinner spinner = (Spinner)findViewById(R.id.spSex);
-        spinner.setAdapter(adapter);
+        //表示するリスト項目の設定
+        adapter = new ArrayAdapter<String>(Calculator.this,R.layout.spinner_item,getResources().getStringArray(R.array.sex));
 
-        //項目が選択された時の動作設定
-        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        //btnsexのボタンクリック時処理
+        btnsex.setOnClickListener(new View.OnClickListener() {
 
-            //ドロップダウンリストから項目が選択された時
+            int selectedIndex = 0;
+
+            //ダイアログを表示する
             @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                //テスト的にToastを表示してみる
-                Spinner spinner = (Spinner) parent;
-                Toast.makeText(getApplicationContext(),Integer.toString(spinner.getSelectedItemPosition()), Toast.LENGTH_SHORT).show();
+            public void onClick(View v) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(Calculator.this);
+                builder.setTitle("選択してください");
+                builder.setSingleChoiceItems(adapter,selectedIndex,onClickListener);
+                AlertDialog alertDialog = builder.create();
+                alertDialog.show();
             }
 
-            //何も選択されなかった時の動作
+            //ダイアログ内で項目が選択された時の処理
+            DialogInterface.OnClickListener onClickListener = new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    selectedIndex = which;
+                    btnsex.setText(adapter.getItem(which));
+                    dialog.dismiss();
+                }
+            };
+        });
+
+        final ArrayAdapter<String> adapter1 = new ArrayAdapter<String>(Calculator.this,R.layout.spinner_item,getResources().getStringArray(R.array.alchol));
+
+        //btnalcholのボタンクリック時処理
+        btnalchol.setOnClickListener(new View.OnClickListener() {
+
+            int selectedIndex = 0;
+
             @Override
-            public void onNothingSelected(AdapterView<?> parent) {
+            public void onClick(View v) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(Calculator.this);
+                builder.setTitle("選択してください");
+                builder.setSingleChoiceItems(adapter1,selectedIndex,onClickListener);
+                AlertDialog alertDialog = builder.create();
+                alertDialog.show();
             }
+
+            DialogInterface.OnClickListener onClickListener = new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    selectedIndex  = which;
+                    btnalchol.setText(adapter1.getItem(which));
+                    dialog.dismiss();
+                }
+            };
+        });
+
+        final ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(Calculator.this,R.layout.spinner_item,getResources().getStringArray(R.array.glass));
+
+        //btnglassタップイベント
+        btnglass.setOnClickListener(new View.OnClickListener() {
+            int selectedIndex = 0;
+
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(Calculator.this);
+                builder.setTitle("選択してください");
+                builder.setSingleChoiceItems(adapter2,selectedIndex,onClickListener);
+                AlertDialog alertDialog = builder.create();
+                alertDialog.show();
+            }
+
+            DialogInterface.OnClickListener onClickListener = new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    selectedIndex = which;
+                    btnglass.setText(adapter2.getItem(which));
+                    dialog.dismiss();
+                }
+            };
         });
 
         //btncalcのボタンクリック時処理
@@ -65,5 +133,7 @@ public class Calculator extends AppCompatActivity {
                 //alcholCalculator.CalcResult(etxtweight,etxtaldegree,etxtmili,vtxtresult);
             }
         });
+
+        //btnresのボタンクリック時処理
     }
 }

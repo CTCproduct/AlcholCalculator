@@ -2,14 +2,17 @@
     <string name="app_name">アルコール分解時間計算アプリ</string>
     <!--性別-->
     <string-array name="sex">
-        <item>　　</item>
         <item>男性</item>
         <item>女性</item>
     </string-array>
     
     <!--アルコールの種類-->>
     <string-array name="alchol">
-
+        <item>ビール</item>
+        <item>ハイボール系</item>
+        <item>焼酎</item>
+        <item>日本酒</item>
+        <item>ワイン</item>
     </string-array>
 
     <!--グラスの種類-->

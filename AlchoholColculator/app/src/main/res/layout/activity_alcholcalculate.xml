@@ -22,9 +22,13 @@
             android:layout_height="wrap_content"
             android:textStyle="bold"/>
 
-        <Spinner
-            android:id="@+id/spSex"
-            android:layout_weight="1.25"
+        <Button
+            android:gravity="center"
+            android:text="Tap"
+            android:textSize="20dp"
+            android:id="@+id/BtnSex"
+            style="@android:style/Widget.Holo.Spinner"
+            android:layout_weight="1.5"
             android:layout_gravity="center"
             android:layout_width="0dp"
             android:layout_height="wrap_content"/>
@@ -73,7 +77,12 @@
             android:text="種類："
             android:textStyle="bold"/>
 
-        <Spinner
+        <Button
+            android:id="@+id/BtnAlchol"
+            android:text="Tap"
+            android:textSize="20dp"
+            android:gravity="center"
+            style="@android:style/Widget.Holo.Spinner"
             android:layout_marginRight="100dp"
             android:layout_weight="7"
             android:layout_width="0dp"
@@ -98,7 +107,11 @@
             android:text="グラス："
             android:textStyle="bold"/>
 
-        <Spinner
+        <Button
+            android:id="@+id/BtnGlass"
+            android:text="Tap"
+            android:textSize="20dp"
+            style="@android:style/Widget.Holo.Spinner"
             android:layout_weight="1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"/>
@@ -126,6 +139,7 @@
         android:orientation="horizontal">
 
         <Button
+            android:id="@+id/BtnAdd"
             android:paddingRight="15dp"
             android:text="追加"
             android:textSize="25dp"
@@ -142,6 +156,7 @@
 
         <Button
             android:text="リセット"
+            android:id="@+id/BtnRes"
             android:textSize="25dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
