@@ -19,7 +19,8 @@ import android.widget.Toast;
  */
 public class Calculator extends AppCompatActivity {
 
-    //ArrayAdapter<String> adapter;
+    ItemDialog itemDialog = new ItemDialog();
+    Bundle bundle = new Bundle();
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -32,7 +33,7 @@ public class Calculator extends AppCompatActivity {
         final Button btnalchol = (Button)findViewById(R.id.BtnAlchol);
         final Button btnglass = (Button)findViewById(R.id.BtnGlass);
         final Button btnadd = (Button)findViewById(R.id.BtnAdd);
-        Button btncalc = (Button)findViewById(R.id.BtnCalc);
+        final Button btncalc = (Button)findViewById(R.id.BtnCalc);
         final Button btnres = (Button)findViewById(R.id.BtnRes);
 
         final ArrayAdapter<String> adapter;
@@ -43,94 +44,29 @@ public class Calculator extends AppCompatActivity {
         //クラスの宣言
         final AlcholCalculator alcholCalculator = new AlcholCalculator();
 
-        //表示するリスト項目の設定
-        adapter = new ArrayAdapter<String>(Calculator.this,R.layout.spinner_item,getResources().getStringArray(R.array.sex));
-
-        //btnsexのボタンクリック時処理
+        //btnsexタップイベント
         btnsex.setOnClickListener(new View.OnClickListener() {
 
-            int selectedIndex = 0;
-
-            //ダイアログを表示する
             @Override
             public void onClick(View v) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(Calculator.this);
-                builder.setTitle("選択してください");
-                builder.setSingleChoiceItems(adapter,selectedIndex,onClickListener);
-                AlertDialog alertDialog = builder.create();
-                alertDialog.show();
+                ShowDialog(R.array.sex,R.id.BtnSex);
             }
-
-            //ダイアログ内で項目が選択された時の処理
-            DialogInterface.OnClickListener onClickListener = new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    selectedIndex = which;
-                    btnsex.setText(adapter.getItem(which));
-                    dialog.dismiss();
-                }
-            };
         });
 
-        final ArrayAdapter<String> adapter1 = new ArrayAdapter<String>(Calculator.this,R.layout.spinner_item,getResources().getStringArray(R.array.alchol));
-
+        //btnalcholタップイベント
         btnalchol.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ItemDialog itemDialog = new ItemDialog();
-                itemDialog.show(getSupportFragmentManager(),"dialog");
+                ShowDialog(R.array.alchol,R.id.BtnAlchol);
             }
         });
-
-        //btnalcholのボタンクリック時処理
-        /*
-        btnalchol.setOnClickListener(new View.OnClickListener() {
-
-            int selectedIndex = 0;
-
-            @Override
-            public void onClick(View v) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(Calculator.this);
-                builder.setTitle("選択してください");
-                builder.setSingleChoiceItems(adapter1,selectedIndex,onClickListener);
-                AlertDialog alertDialog = builder.create();
-                alertDialog.show();
-            }
-
-            DialogInterface.OnClickListener onClickListener = new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    selectedIndex  = which;
-                    btnalchol.setText(adapter1.getItem(which));
-                    dialog.dismiss();
-                }
-            };
-        });
-        */
-
-        final ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(Calculator.this,R.layout.spinner_item,getResources().getStringArray(R.array.glass));
 
         //btnglassタップイベント
         btnglass.setOnClickListener(new View.OnClickListener() {
-            int selectedIndex = 0;
-
             @Override
             public void onClick(View v) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(Calculator.this);
-                builder.setTitle("選択してください");
-                builder.setSingleChoiceItems(adapter2,selectedIndex,onClickListener);
-                AlertDialog alertDialog = builder.create();
-                alertDialog.show();
+                ShowDialog(R.array.glass,R.id.BtnGlass);
             }
-
-            DialogInterface.OnClickListener onClickListener = new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    selectedIndex = which;
-                    btnglass.setText(adapter2.getItem(which));
-                    dialog.dismiss();
-                }
-            };
         });
 
         //btncalcのボタンクリック時処理
@@ -146,6 +82,13 @@ public class Calculator extends AppCompatActivity {
         });
 
         //btnresのボタンクリック時処理
+    }
+
+    private void ShowDialog(int array_item,int btn_id){
+        bundle.putInt("KEY",array_item);
+        bundle.putInt("BTN",btn_id);
+        itemDialog.setArguments(bundle);
+        itemDialog.show(getSupportFragmentManager(),"dialog");
     }
 
 }
