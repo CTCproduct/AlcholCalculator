@@ -17,6 +17,11 @@
 
     <!--グラスの種類-->
     <string-array name="glass">
-
+        <item>大ジョッキ</item>
+        <item>中ジョッキ</item>
+        <item>小ジョッキ</item>
+        <item>サワーグラス</item>
+        <item>ワイングラス</item>
+        <item>ロックグラス</item>
     </string-array>
 </resources>

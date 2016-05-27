@@ -1,6 +1,8 @@
 package com.example.hirokikirigaya.alchoholcolculator;
 
+import android.support.v4.app.DialogFragment;
 import android.support.v4.app.NotificationCompat;
+import android.support.v7.app.AlertDialog;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -10,47 +12,91 @@ import java.math.RoundingMode;
 /**
  * Created by Hiroki Kirigaya on 2016/05/23.
  */
-public class AlcholCalculator {
+public class AlcholCalculator extends DialogFragment {
+
+    //CalcResult
+    //2÷1を行い、分解にかかる時間(小数)を算出し、FormatResultクラスで整えて表示する
+    public String CalcResult(double wei, String alchol, String glass,int count){
+
+        //一時間に分解できるアルコール量の計算
+        double result1 = CalcDisassemnblyalchol(wei);
+        //飲んだ量から純アルコールの計算
+        double result2 = CalcPurealchol(alchol,glass,count);
+
+        //アルコール分解時間の算出
+        double dTotal = result2 / result1;
+
+        //時間の抽出
+        int iHour = (int)dTotal;
+
+        //分の抽出
+        int iMin = (int)((dTotal - iHour) * 60);
+
+        String strResult = "分解にかかる時間は約" + String.valueOf(iHour) + "時間" + String.valueOf(iMin) + "分です。";
+
+        return  strResult;
+    }
 
     //CalcDisassemblyalchol
     //1:体重×0.1を行い、1時間に分解できるアルコール量を計算する
-    public double CalcDisassemnblyalchol(EditText weight){
+    public double CalcDisassemnblyalchol(double weight){
 
         //文字列をdouble型にparseして代入
-        double tai = Double.parseDouble(weight.getText().toString());
-
-        return tai*0.1;
+        return weight*0.1;
     }
 
     //CalcPurealchol
     //2:(度数÷100)×量×0.8を行い、摂取した飲料に含まれる純アルコール量を計算する
-    public double CalcPurealchol(EditText alde,EditText mili){
+    public double CalcPurealchol(String alde,String gla,int cou){
 
-        //EditText内の文字を小数点に変換
-        double deg = Double.parseDouble(alde.getText().toString());
-        double alc = Double.parseDouble(mili.getText().toString());
+        //アルコールの種類から、度数を返すメソッドへ
+        double degree = SetAlcholDegree(alde);
 
-        return (deg/100) * alc * 0.8;
+        //グラスの種類と杯数から、摂取量を返すメソッドへ
+        int amount = SetGlassAmount(gla,cou);
+
+
+        return (degree/100) * amount * 0.8;
     }
 
-    //CalcResult
-    //2÷1を行い、分解にかかる時間(小数)を算出し、FormatResultクラスで整えて表示する
-    public void CalcResult(EditText wei, EditText al, EditText ml,AutoFontSizeTextView result){
+    //SetAlcholDegree
+    //アルコールの種類からアルコール度数を判定するメソッド
+    public double SetAlcholDegree(String alcho){
+        switch (alcho){
+            case "ビール":
+                return 5.0;
+            case "ハイボール系":
+                return 3.5;
+            case "焼酎":
+                return 22.5;
+            case "日本酒":
+                return 15.5;
+            case "ワイン":
+                return 12.5;
+            default:
+                return 0.0;
+        }
+    }
 
-        double result1 = CalcDisassemnblyalchol(wei);
-        double result2 = CalcPurealchol(al,ml);
+    //SetGlassAmount
+    //グラスの種類と杯数から摂取量を返すメソッド
+    public int SetGlassAmount(String glass,int amount){
 
-        //アルコール分解時間の計算 切り上げ　
-        double min = new BigDecimal(String.valueOf(result2 / result1)).setScale(1, RoundingMode.CEILING).doubleValue();
-
-        //整数部分の取出し
-        int hour = (int)min;
-
-        //小数部分の取出し
-        min -= hour;
-
-        //結果を表示する
-        result.setText("アルコール分解時間：約" + String.valueOf(hour) + "時間" + String.valueOf((int)(min*60)) + "分です。");
-        //result.setText(String.valueOf((int)(min*60)));
+        switch(glass){
+            case "大ジョッキ":
+                return 500 * amount;
+            case "中ジョッキ":
+                return 300*amount;
+            case "小ジョッキ":
+                return 200*amount;
+            case "サワーグラス":
+                return 350*amount;
+            case "ワイングラス":
+                return 250*amount;
+            case "ロックグラス":
+                return 150*amount;
+            default:
+                return 0;
+        }
     }
 }
