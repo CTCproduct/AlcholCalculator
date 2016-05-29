@@ -1,22 +1,17 @@
 package com.example.hirokikirigaya.alchoholcolculator;
 
 import android.support.v4.app.DialogFragment;
-import android.support.v4.app.NotificationCompat;
-import android.support.v7.app.AlertDialog;
-import android.widget.EditText;
-import android.widget.TextView;
-
-import java.math.BigDecimal;
-import java.math.RoundingMode;
 
 /**
  * Created by Hiroki Kirigaya on 2016/05/23.
  */
 public class AlcholCalculator extends DialogFragment {
 
+    double douSumtime = 0.0;
+
     //CalcResult
     //2÷1を行い、分解にかかる時間(小数)を算出し、FormatResultクラスで整えて表示する
-    public String CalcResult(double wei, String alchol, String glass,int count){
+    public String CalcResult(double wei, String alchol, String glass, int count){
 
         //一時間に分解できるアルコール量の計算
         double result1 = CalcDisassemnblyalchol(wei);
@@ -26,15 +21,31 @@ public class AlcholCalculator extends DialogFragment {
         //アルコール分解時間の算出
         double dTotal = result2 / result1;
 
+        //総計
+        douSumtime += dTotal;
+
         //時間の抽出
         int iHour = (int)dTotal;
 
         //分の抽出
         int iMin = (int)((dTotal - iHour) * 60);
 
-        String strResult = "分解にかかる時間は約" + String.valueOf(iHour) + "時間" + String.valueOf(iMin) + "分です。";
+        String strResult = String.valueOf(iHour) + "時間" + String.valueOf(iMin) + "分";
 
         return  strResult;
+    }
+
+    //GetSumAlcholTime
+    //合計に表示する合計値を算出するメソッド
+    public String GetSumAlcholTime(){
+        //時間の抽出
+        int iHour = (int)douSumtime;
+
+        //分の抽出
+        int iMin = (int)((douSumtime - iHour) * 60);
+
+        return  "合計=約" + String.valueOf(iHour) + "時間" + String.valueOf(iMin) + "分";
+
     }
 
     //CalcDisassemblyalchol

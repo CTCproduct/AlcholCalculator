@@ -1,21 +1,19 @@
 package com.example.hirokikirigaya.alchoholcolculator;
 
-import android.content.ClipData;
-import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.AdapterView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.StringTokenizer;
 
 /**
  * Created by Hiroki Kirigaya on 2016/05/23.
@@ -36,11 +34,14 @@ public class Calculator extends AppCompatActivity {
         final Button btnAlchol = (Button)findViewById(R.id.BtnAlchol);
         final Button btnGlass = (Button)findViewById(R.id.BtnGlass);
         final Button btnAdd = (Button)findViewById(R.id.BtnAdd);
-        final Button btnCalc = (Button)findViewById(R.id.BtnCalc);
         final Button btnRes = (Button)findViewById(R.id.BtnRes);
+        final Button btnMenu = (Button)findViewById(R.id.BtnMenu);
+
+        //TextViewのインスタンス取得
+        final TextView vtxtSumTime = (TextView)findViewById(R.id.VtxtSumtime);
 
         //文字列を格納するArrayListの宣言
-        final ArrayList<String> arListitem = new ArrayList<>();
+        final List<String> arListitem = new ArrayList<String>();
 
         //ListViewのインスタンスの取得
         final ListView listView = (ListView)findViewById(R.id.List_Item);
@@ -54,6 +55,16 @@ public class Calculator extends AppCompatActivity {
 
         //クラスの宣言
         final AlcholCalculator alcholCalculator = new AlcholCalculator();
+
+        //btnMenuタップイベント
+        btnMenu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplication(),MainActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
 
         //btnSexタップイベント
         btnSex.setOnClickListener(new View.OnClickListener() {
@@ -84,27 +95,17 @@ public class Calculator extends AppCompatActivity {
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                arListitem.add(btnAlchol.getText().toString() + "：" + btnGlass.getText().toString() + "：" + etxtCount.getText().toString() + "杯");
-                aradListview.clear();
-                aradListview.addAll(arListitem);
-                aradListview.notifyDataSetChanged();
-                listView.setAdapter(aradListview);
-            }
-        });
-
-        //btnCalcのボタンクリック時処理
-        btnCalc.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                //1:体重より、1時間に分解できるアルコール量の計算
-                //2:飲んだ量より純アルコール量を計算する
-                //1,2の結果より分解にかかる時間を表示する
-                String strAlchol = alcholCalculator.CalcResult(Double.parseDouble(etxtWeight.getText().toString()),btnAlchol.getText().toString(),btnGlass.getText().toString(),Integer.parseInt(etxtCount.getText().toString()));
-                AlertDialog.Builder builder = new AlertDialog.Builder(Calculator.this);
-                builder.setMessage(strAlchol);
-                AlertDialog dialog = builder.create();
-                dialog.show();
+                try{
+                    String  strItem = btnAlchol.getText().toString() + "：" + btnGlass.getText().toString() + "：" + etxtCount.getText().toString() + "杯 ⇒ 約" + alcholCalculator.CalcResult(Double.parseDouble(etxtWeight.getText().toString()),btnAlchol.getText().toString(),btnGlass.getText().toString(),Integer.parseInt(etxtCount.getText().toString()));
+                    vtxtSumTime.setText(alcholCalculator.GetSumAlcholTime());
+                    arListitem.add(strItem);
+                    aradListview.clear();
+                    aradListview.addAll(arListitem);
+                    aradListview.notifyDataSetChanged();
+                    listView.setAdapter(aradListview);
+                }catch (Exception e){
+                    Toast.makeText(getApplicationContext(),"問題発生:"+e.toString(),Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
@@ -115,6 +116,8 @@ public class Calculator extends AppCompatActivity {
                 //配列の中身と、ListViewの中身を空にする
                 arListitem.clear();
                 aradListview.clear();
+                alcholCalculator.douSumtime = 0.0;
+                vtxtSumTime.setText("合計：");
             }
         });
     }

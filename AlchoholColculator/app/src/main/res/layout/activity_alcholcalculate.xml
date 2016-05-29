@@ -8,6 +8,22 @@
     android:background="#FFF5EE"
     android:orientation="vertical">
 
+    <!--メニューボタン-->
+    <LinearLayout
+        android:paddingLeft="15dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/BtnMenu"
+            android:textSize="15dp"
+            android:text="メニューへ"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
+
     <!--性別、体重-->
     <LinearLayout
         android:paddingLeft="15dp"
@@ -50,7 +66,9 @@
             android:layout_weight="1"
             android:textSize="20dp"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:digits="0123456789."
+            android:inputType="number"/>
 
         <TextView
             android:text="kg"
@@ -95,6 +113,7 @@
     <LinearLayout
         android:paddingTop="10dp"
         android:paddingLeft="15dp"
+        android:paddingRight="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
@@ -124,7 +143,9 @@
             android:gravity="center"
             android:layout_weight="0.5"
             android:layout_width="0dp"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:digits="0123456789"
+            android:inputType="number"/>
 
         <TextView
             android:text="杯"
@@ -138,6 +159,8 @@
     <!--計算、追加、リセットボタン-->
     <LinearLayout
         android:paddingTop="10dp"
+        android:paddingLeft="25dp"
+        android:paddingRight="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
@@ -152,19 +175,19 @@
             android:layout_height="wrap_content" />
 
         <Button
-            android:paddingRight="15dp"
-            android:id="@+id/BtnCalc"
-            android:text="計算"
-            android:textSize="25dp"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent" />
-
-        <Button
             android:text="リセット"
             android:id="@+id/BtnRes"
             android:textSize="25dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
+
+        <com.example.hirokikirigaya.alchoholcolculator.AutoFontSizeTextView
+            android:gravity="center"
+            android:text="合計:"
+            android:textSize="25dp"
+            android:id="@+id/VtxtSumtime"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
 
     </LinearLayout>
 
