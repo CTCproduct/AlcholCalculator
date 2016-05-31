@@ -29,7 +29,6 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(getApplication(),Calculator.class);
                 startActivity(intent);
-                finish();
 
             }
         });
@@ -74,11 +73,9 @@ public class MainActivity extends AppCompatActivity {
         btnSet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getApplicationContext(),"まだ実装しておりません。",Toast.LENGTH_SHORT).show();
-                /*
                 Intent intent = new Intent(getApplication(),Settings.class);
                 startActivity(intent);
-                */
+
             }
         });
 

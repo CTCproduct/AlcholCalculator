@@ -24,4 +24,12 @@
         <item>ワイングラス</item>
         <item>ロックグラス</item>
     </string-array>
+
+    <!--設定項目-->
+    <string-array name="setting">
+        <item>アルコール設定</item>
+        <item>グラス設定</item>
+        <item>個別設定</item>
+    </string-array>
+
 </resources>
