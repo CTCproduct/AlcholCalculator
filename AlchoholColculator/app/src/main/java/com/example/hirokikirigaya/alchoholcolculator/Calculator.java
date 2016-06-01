@@ -96,7 +96,7 @@ public class Calculator extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 try{
-                    String  strItem = btnAlchol.getText().toString() + "：" + btnGlass.getText().toString() + "：" + etxtCount.getText().toString() + "杯 ⇒ 約" + alcholCalculator.CalcResult(Double.parseDouble(etxtWeight.getText().toString()),btnAlchol.getText().toString(),btnGlass.getText().toString(),Integer.parseInt(etxtCount.getText().toString()));
+                    String  strItem = btnAlchol.getText().toString() + "：" + btnGlass.getText().toString() + "：" + etxtCount.getText().toString() + "杯⇒約" + alcholCalculator.CalcResult(Double.parseDouble(etxtWeight.getText().toString()),btnAlchol.getText().toString(),btnGlass.getText().toString(),Integer.parseInt(etxtCount.getText().toString()));
                     vtxtSumTime.setText(alcholCalculator.GetSumAlcholTime());
                     arListitem.add(strItem);
                     aradListview.clear();

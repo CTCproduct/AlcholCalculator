@@ -9,6 +9,8 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
+    ButtonControl btnctrl;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -16,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         //各種Viewの取得
-        Button btnCalc = (Button)findViewById(R.id.BtnAlcholcalc);
+        final Button btnCalc = (Button)findViewById(R.id.BtnAlcholcalc);
         Button btnKnow = (Button)findViewById(R.id.BtnKnowledge);
         Button btnSick = (Button)findViewById(R.id.BtnSickness);
         Button btnStock1 = (Button) findViewById(R.id.BtnStock1);
@@ -29,7 +31,6 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(getApplication(),Calculator.class);
                 startActivity(intent);
-
             }
         });
 
@@ -37,11 +38,8 @@ public class MainActivity extends AppCompatActivity {
         btnKnow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getApplicationContext(),"まだ実装しておりません。",Toast.LENGTH_SHORT).show();
-                /*
                 Intent intent = new Intent(getApplication(),Knowledge.class);
                 startActivity(intent);
-                */
             }
         });
 
@@ -49,11 +47,8 @@ public class MainActivity extends AppCompatActivity {
         btnSick.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getApplicationContext(),"まだ実装しておりません。",Toast.LENGTH_SHORT).show();
-                /*
                 Intent intent = new Intent(getApplication(),Sickness.class);
                 startActivity(intent);
-                */
             }
         });
 
@@ -61,11 +56,8 @@ public class MainActivity extends AppCompatActivity {
         btnStock1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getApplicationContext(),"まだ実装しておりません。",Toast.LENGTH_SHORT).show();
-                /*
                 Intent intent = new Intent(getApplication(),Stock.class);
                 startActivity(intent);
-                */
             }
         });
 
@@ -75,7 +67,6 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(getApplication(),Settings.class);
                 startActivity(intent);
-
             }
         });
 
@@ -83,11 +74,8 @@ public class MainActivity extends AppCompatActivity {
         btnHelp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getApplicationContext(),"まだ実装しておりません。",Toast.LENGTH_SHORT).show();
-                /*
                 Intent intent = new Intent(getApplication(),Help.class);
                 startActivity(intent);
-                */
             }
         });
     }

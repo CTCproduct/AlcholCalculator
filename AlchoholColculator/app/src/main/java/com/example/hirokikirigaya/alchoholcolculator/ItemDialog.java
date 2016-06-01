@@ -27,7 +27,7 @@ public class ItemDialog extends DialogFragment {
         //フラグメントからActivityへの参照方法
         button = (Button)getActivity().findViewById(btn_id);
 
-        //アラーとダイアログに表示するリストの設定
+        //アラートダイアログに表示するリストの設定
         final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(getActivity(),R.layout.support_simple_spinner_dropdown_item,getResources().getStringArray(array_id));
 
         //ダイアログを表示するためのビルダーの宣言

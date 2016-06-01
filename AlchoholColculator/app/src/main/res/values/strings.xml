@@ -25,11 +25,44 @@
         <item>ロックグラス</item>
     </string-array>
 
+    <!--知識項目-->
+    <string-array name="knowledge">
+        <item>アルコールとは</item>
+        <item>アルコール分解</item>
+        <item>分解の流れ</item>
+        <item>“酔う”とは</item>
+        <item>肝臓との関係</item>
+        <item>アルコール処理能力</item>
+        <item>処理能力の個人差</item>
+    </string-array>
+
+    <string-array name="knowledge_url">
+        <item>http://www.yahoo.co.jp</item>
+        <item>http://www.arukenkyo.or.jp/health/base/</item>
+    </string-array>
+
+    <!--二日酔いの知識項目-->
+    <string-array name="sickness">
+        <item>二日酔いとは</item>
+        <item>二日酔いのメカニズム</item>
+        <item>二日酔いになったら</item>
+        <item>二日酔い判定</item>
+        <item>二日酔いにならないために</item>
+    </string-array>
+
     <!--設定項目-->
     <string-array name="setting">
         <item>アルコール設定</item>
         <item>グラス設定</item>
         <item>個別設定</item>
     </string-array>
+
+    <!--ヘルプ項目-->
+    <string-array name="help">
+        <item>使用方法</item>
+        <item>問い合わせ</item>
+        <item>バージョン</item>
+    </string-array>
+
 
 </resources>

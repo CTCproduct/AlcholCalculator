@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.hirokikirigaya.alchoholcolculator">
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -18,5 +19,31 @@
             android:name=".Calculator"
             android:label="計算">
         </activity>
+        <activity
+            android:name=".Knowledge"
+            android:label="知識">
+        </activity>
+        <activity
+            android:name=".Sickness"
+            android:label="2日酔い">
+        </activity>
+        <activity
+            android:name=".Stock"
+            android:label="予備">
+        </activity>
+        <activity
+            android:name=".Settings"
+            android:label="設定">
+        </activity>
+        <activity
+            android:name=".Help"
+            android:label="ヘルプ">
+        </activity>
+        <activity
+            android:name=".WebViewContents"
+            android:label="Web"
+            >
+        </activity>
+
     </application>
 </manifest>
